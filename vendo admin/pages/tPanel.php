@@ -1,0 +1,20 @@
+<?php
+include("config.php");
+$results1 = $mysqli->query("SELECT * FROM orders ORDER BY order_id DESC LIMIT 10");
+if ($results1) { 
+	while($obj1 = $results1->fetch_object()){
+		echo "<tr>";
+		echo "<td>".$obj1->order_id."</td>";
+		$results2 = $mysqli->query("SELECT * FROM transactions WHERE transaction_id = '{$obj1->transaction_id}'");
+		$obj2 = $results2->fetch_object();
+		echo "<td>".$obj2->date_time."</td>";
+		$results3 = $mysqli->query("SELECT * FROM products WHERE product_id = '{$obj1->product_id}'");
+		$obj3 = $results3->fetch_object();
+		echo "<td>".$obj3->brand_name."</td>";
+		//echo "<td>".$obj1->quantity."</td>";
+		//echo "<td>&#8369; ".strval(number_format($obj3->price * $obj1->quantity, 2))."</td>";
+		echo "<td>&#8369; ".strval(number_format($obj3->price, 2))."</td>";
+		echo "</tr>";
+    }    
+}
+?>

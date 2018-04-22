@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vendo OS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/jquery-ui.css" />
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.css">
+  <link href="jspanel/jquery.jspanel.css" rel="stylesheet">
+  
+</head>
+<body style="background-image: url('/red.gif'); background-size: cover;">
+
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="navbar-header  dropup">
+    <a class="navbar-brand dropdown-toggle" data-toggle="dropdown"" href="#"><i id="os" class="fa fa-windows"></i> VendOS</a>
+    <ul class="dropdown-menu">
+                        <!--Menu Here-->
+			  <li><a href="../vendo ui"><i class="fa fa-desktop"></i> Vendo UI</a></li>
+			  <li class="divider"></li>
+			  <li id="vendoadmin_menu"><a href="#"><i class="fa fa-tasks"></i> vendoadmin (admin panel)</a></li>
+			  <!--<li id="phpmyadmin_menu"><a href="#">phpmyadmin</a></li>-->
+              		  <li id="butterfly_menu"><a href="#"><i class="fa fa-terminal"></i> butterfly (terminal)</a></li>
+			  <li id="elfinder_root_menu"><a href="#"><i class="fa fa-folder-o"></i> elfinder (root)</a></li>
+                          <li id="elfinder_framework_menu"><a href="#"><i class="fa fa-folder-o"></i> elfinder (framework)</a></li>
+   			  <li id="elfinder_files_menu"><a href="#"><i class="fa fa-folder-o"></i> elfinder (files)</a></li>
+			  <li class="divider"></li>
+			  <li id="documentation_menu"><a href="#"><i class="fa fa-file-o"></i> documentation</a></li>
+			<!--Menu Here-->
+    </ul>
+  </div>
+  <div class="container-fluid">
+    <div>
+      <ul class="nav navbar-nav">
+		<!--xxxxx-->
+      </ul>
+	  <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><i class="fa fa-graduation-cap"></i> CpE 2016</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container" id="desktop">
+</div>
+
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="jspanel/jquery.jspanel.js"></script>
+<script>
+var vendoadmin;
+var phpmyadmin;
+var butterfly;
+var elfinder_root;
+var elfinder_framework;
+var elfinder_files;
+var documentation;
+
+$("#vendoadmin_menu").on("click", function(event){
+if(!vendoadmin){
+vendoadmin = $.jsPanel({
+    maximizedMargin: {
+    // properties left out default to 5
+    bottom: 55,
+    },
+    iframe: {
+        //src:    "http://192.168.2.3/thesis/dev2/elfinder/elfinder.html",
+	src:    "../vendo admin",
+        id:     "vendoadminFrame",
+        style:  {"display": "none", "border": "10px solid transparent"},
+        width:  '100%',
+        height: '100%'
+    },
+    callback: function () {
+        document.getElementById("vendoadminFrame").onload = function(){
+            $("#vendoadminFrame").fadeIn(2000);
+        }
+    },
+    size:     {width: 1000, height: 440},
+    position: "center",
+    theme:    "black",
+    id:	      "vendoadmin",
+    title:    "Vendo Admin"
+});
+}else{
+vendoadmin.front();
+}
+});
+
+$("#phpmyadmin_menu").on("click", function(event){
+if(!phpmyadmin){
+phpmyadmin = $.jsPanel({
+    maximizedMargin: {
+    // properties left out default to 5
+    bottom: 55,
+    },
+    iframe: {
+	src:    "/phpmyadmin",
+        id:     "phpmyadminFrame",
+        style:  {"display": "none", "border": "10px solid transparent"},
+        width:  '100%',
+        height: '100%'
+    },
+    callback: function () {
+        document.getElementById("phpmyadminFrame").onload = function(){
+            $("#phpmyadminFrame").fadeIn(2000);
+        }
+    },
+    size:     {width: 1000, height: 440},
+    position: "center",
+    theme:    "black",
+    id:	      "phpmyadmin",
+    title:    "phpmyadmin"
+});
+}else{
+phpmyadmin.front();
+}
+});
+
+$("#butterfly_menu").on("click", function(event){
+if(!butterfly){
+butterfly = $.jsPanel({
+    maximizedMargin: {
+    // properties left out default to 5
+    bottom: 55,
+    },
+    iframe: {
+        //src:    "http://192.168.2.3/thesis/dev2/elfinder/elfinder.html",
+	src:    "http://192.168.2.3:57575",
+        id:     "butterflyFrame",
+        style:  {"display": "none", "border": "10px solid transparent"},
+        width:  '100%',
+        height: '100%'
+    },
+    callback: function () {
+        document.getElementById("butterflyFrame").onload = function(){
+            $("#butterflyFrame").fadeIn(2000);
+        }
+    },
+    size:     {width: 1000, height: 440},
+    position: "center",
+    theme:    "black",
+    id:	      "butterfly",
+    title:    "Butterfly"
+});
+}else{
+butterfly.front();
+}
+});
+
+$("#elfinder_root_menu").on("click", function(event){
+if(!elfinder_root){
+elfinder_root = $.jsPanel({
+    maximizedMargin: {
+    // properties left out default to 5
+    bottom: 55,
+    },
+    iframe: {
+        src:    "../vendos/elfinder/elfinder.html",
+        id:     "elfinder_rootFrame",
+        style:  {"display": "none", "border": "10px solid transparent"},
+        width:  '100%',
+        height: '100%'
+    },
+    callback: function () {
+        document.getElementById("elfinder_rootFrame").onload = function(){
+            $("#elfinder_rootFrame").fadeIn(2000);
+        }
+    },
+    size:     {width: 1000, height: 440},
+    position: "center",
+    theme:    "black",
+    id:	      "elfinder_root",
+    title:    "Elfinder Root"
+});
+}else{
+elfinder_root.front();
+}
+});
+
+$("#elfinder_framework_menu").on("click", function(event){
+if(!elfinder_framework){
+elfinder_framework = $.jsPanel({
+    maximizedMargin: {
+    // properties left out default to 5
+    bottom: 55,
+    },
+    iframe: {
+        src:    "../vendos/elfinder/framework.html",
+        id:     "elfinder_frameworkFrame",
+        style:  {"display": "none", "border": "10px solid transparent"},
+        width:  '100%',
+        height: '100%'
+    },
+    callback: function () {
+        document.getElementById("elfinder_frameworkFrame").onload = function(){
+            $("#elfinder_frameworkFrame").fadeIn(2000);
+        }
+    },
+    size:     {width: 1000, height: 440},
+    position: "center",
+    theme:    "black",
+    id:	      "elfinder_framework",
+    title:    "Elfinder Framework"
+});
+}else{
+elfinder_framework.front();
+}
+});
+
+$("#elfinder_files_menu").on("click", function(event){
+if(!elfinder_files){
+elfinder_files = $.jsPanel({
+    maximizedMargin: {
+    // properties left out default to 5
+    bottom: 55,
+    },
+    iframe: {
+        src:    "../vendos/elfinder/files.html",
+        id:     "elfinder_filesFrame",
+        style:  {"display": "none", "border": "10px solid transparent"},
+        width:  '100%',
+        height: '100%'
+    },
+    callback: function () {
+        document.getElementById("elfinder_filesFrame").onload = function(){
+            $("#elfinder_filesFrame").fadeIn(2000);
+        }
+    },
+    size:     {width: 1000, height: 440},
+    position: "center",
+    theme:    "black",
+    id:	      "elfinder_files",
+    title:    "Elfinder Files"
+});
+}else{
+elfinder_files.front();
+}
+});
+
+$("#documentation_menu").on("click", function(event){
+if(!documentation){
+documentation = $.jsPanel({
+    maximizedMargin: {
+    // properties left out default to 5
+    bottom: 55,
+    },
+    iframe: {
+        src:    "../documentation.php",
+        id:     "documentationFrame",
+        style:  {"display": "none", "border": "10px solid transparent"},
+        width:  '100%',
+        height: '100%'
+    },
+    callback: function () {
+        document.getElementById("documentationFrame").onload = function(){
+            $("#documentationFrame").fadeIn(2000);
+        }
+    },
+    size:     {width: 1000, height: 440},
+    position: "center",
+    theme:    "black",
+    id:	      "documentation",
+    title:    "Documentation"
+});
+}
+});
+
+$("body").on( "jspanelclosed", function closeHandler(event, id) {
+    if( id === "vendoadmin" ) {
+	vendoadmin=null;
+    }else if( id === "phpmyadmin" ) {
+	phpmyadmin=null;
+    }else if( id === "butterfly" ) {
+	butterfly=null;
+    }else if( id === "elfinder_root" ) {
+	elfinder_root=null;
+    }else if( id === "elfinder_framework" ) {
+	elfinder_framework=null;
+    }else if( id === "elfinder_files" ) {
+	elfinder_files=null;
+    }else if( id === "documentation" ) {
+	documentation=null;
+    }
+});
+
+m=0;
+setInterval(function(){
+	if(m==1)
+	$("#os").attr("class", "fa fa-windows");
+	if(m==2)
+	$("#os").attr("class", "fa fa-apple");
+	if(m==3)
+	$("#os").attr("class", "fa fa-linux");
+	if(m==4){
+		$("#os").attr("class", "fa fa-android");
+		m=0;
+	}
+	m++;
+}, 2000);
+</script>
+</body>
+</html>
+

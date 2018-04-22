@@ -1,12 +1,24 @@
 # VendShit
 Vending Machine Framework
 
-Author: Reed
-OS: Linux
-Device: Raspberry Pi
-Setup: LAMP, PySerial, TCP/IP Serial Bridge, Butterfly
-Requirements: Python 2.7.3
+## Getting Started
 
+Download and read the documentation [here](http://www.symbianize.com/showthread.php?t=1438493&p=23023323&viewfull=1#post23023323).
+For the block diagram, process diagram and hardware requirements, see chapter II in the documentation. For circuit design and architecture, installation and technical details, see chapter III in the documentation.
+
+## Features
+- Touch Screen LCD
+- Web Based System
+	- Vend OS - Vending Machine Framework
+	- Vend Admin - Admin Panel
+ 	- Vend UI - User Interface
+- SMS Notification (alert for low stocks)
+- Play Video Advertisment (when system is idle)
+- Print Receipt
+- 1 Peso, 5 Peso, 10 Peso Coin Slot
+- Internet Connected (IOT)
+
+## Requirements
 LAMP is an archetypal model of web service solution stacks, named as an acronym of the names of its original four open-source components: the Linux operating system, the Apache HTTP Server, the MySQL relational database management system (RDBMS), and the PHP programming language. The LAMP components are largely interchangeable and not limited to the original selection. As a solution stack, LAMP is suitable for building dynamic web sites and web applications
 
 PySerial encapsulates the access for the serial port. It provides backends for Python running on Windows, Linux, BSD (possibly any POSIX compliant system), Jython and IronPython (.NET and Mono). The module named serial automatically selects the appropriate backend.
@@ -15,51 +27,66 @@ TCP/IP Serial Bridge opens a TCP/IP port. When a connection is made to that port
 
 Butterfly is a tornado web server written in python which powers a full featured web terminal.
 
+## Installation
 1. Install LAMP
--Install Apache2 and PHP5
-	sudo apt-get install apache2 php5 libapache2-mod-php5
--Install MySQL
-	sudo apt-get install mysql-server mysql-client php5-mysql
--Install PhpMyAdmin
-	sudo apt-get install phpmyadmin
--Configure PhpMyAdmin
-	echo Include /etc/phpmyadmin/apache.conf >> /etc/apache2/apache2.conf	
--Reboot
-	reboot
+- Install Apache2 and PHP5
+
+	`sudo apt-get install apache2 php5 libapache2-mod-php5`
+- Install MySQL
+
+	`sudo apt-get install mysql-server mysql-client php5-mysql`
+- Install PhpMyAdmin
+
+	`sudo apt-get install phpmyadmin`
+- Configure PhpMyAdmin
+
+	`echo Include /etc/phpmyadmin/apache.conf >> /etc/apache2/apache2.conf`	
+- Reboot
+
+	`reboot`
 
 2. Install pip (if not installed on your system)
--Install pip
-	sudo python get-pip.py
+
+	`sudo python get-pip.py`
 
 2. Install PySerial
--Install PySerial
-	sudo pip install pyserial
+
+	`sudo pip install pyserial`
 
 3. Run TCP/IP Serial Bridge
--Run tcp_serial_redirect.py
-	sudo python tcp_serial_redirect.py [options] [port [baudrate]]
+- Run tcp_serial_redirect.py
+
+	`sudo python tcp_serial_redirect.py [options] [port [baudrate]]`
 
 4. Install and Run Butterfly
--Install Butterfly
-	sudo pip install butterfly
--Run and configure
-	butterfly.server.py --unsercure --host="0.0.0.0"
+- Install Butterfly
 
-5.>>>>>>>>
+	`sudo pip install butterfly`
+- Run and configure
 
-) Create a script called mystartup.sh in /etc/init.d/ directory(login as root)
-# vi /etc/init.d/mystartup.sh
+	`butterfly.server.py --unsercure --host="0.0.0.0"`
 
-ii) Add commands to this script one by one:
-#!/bin/bash
-echo "Setting up customized environment..."
-fortune
+5. Configure
 
-iii) Setup executable permission on script:
-# chmod +x /etc/init.d/mystartup.sh
+- Create a script called mystartup.sh in /etc/init.d/ directory(login as root)
+	
+	`vi /etc/init.d/mystartup.sh`
 
-iv)Make sure this script get executed every time Debian Linux system boot up/comes up:
-# update-rc.d mystartup.sh defaults 100
+- Add commands to this script one by one:
+
+	`!/bin/bash`
+    
+    	`echo "Setting up customized environment..."`
+    
+	`fortune`
+    
+
+- Setup executable permission on script:
+
+	`chmod +x /etc/init.d/mystartup.sh`
+
+- Make sure this script get executed every time Debian Linux system boot up/comes up:
+	`update-rc.d mystartup.sh defaults 100`
 
 Where,
 mystartup.sh: Your startup script name
@@ -68,15 +95,15 @@ defaults : The argument 'defaults' refers to the default runlevels, which are 2 
 
 Next time you reboot the system, you custom command or script will get executed via mystartup.sh. You can add more commands to this file or even call other shell/perl scripts from this file too.
 
-(B) Execute shell script at system startup
+- Execute shell script at system startup
 Open the file mystartup.sh in /etc/init.d/ directory
-# vi /etc/init.d/ mystartup.sh
+	`vi /etc/init.d/ mystartup.sh`
 
 Append your script path to the end as follows (suppose your script is /root/fw.start  script that starts firewall)
 
-/root/fw.start
+	`/root/fw.start`
 
 Save the file.
 
-Fore more information, check out my thread at symbianize http://www.symbianize.com/showthread.php?t=1438493&p=23023323&viewfull=1#post23023323
+>Fore more information, check out my thread at [symbianize](http://www.symbianize.com/showthread.php?t=1438493&p=23023323&viewfull=1#post23023323)
 

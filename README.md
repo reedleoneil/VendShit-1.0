@@ -75,11 +75,6 @@ Butterfly is a tornado web server written in python which powers a full featured
 - Add commands to this script one by one:
 
 	`!/bin/bash`
-    
-    	`echo "Setting up customized environment..."`
-    
-	`fortune`
-    
 
 - Setup executable permission on script:
 

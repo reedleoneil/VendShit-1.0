@@ -1,6 +1,32 @@
 <?php
 include("config.php");
 
+//telnet
+function telnet($command)
+{
+	$host    = "127.0.0.1";
+	$port    = 7777;
+	$message = $command;
+	// create socket
+	$socket = socket_create(AF_INET, SOCK_STREAM, 0) or die("Could not create socket\n");
+	socket_set_option($socket, SOL_SOCKET, SO_RCVTIMEO, array('sec' => 0, 'usec' => 7777));
+	socket_set_option($socket, SOL_SOCKET, SO_SNDTIMEO, array('sec' => 0, 'usec' => 7777));
+	// connect to server
+	$result = socket_connect($socket, $host, $port) or die("Could not connect to server\n");  
+	usleep(100000);
+	// send string to server
+	socket_write($socket, $message, strlen($message)) or die("Could not send data to server\n");
+	usleep(100000);
+	// get server response
+	if($command == 'q')
+	{
+		$result = trim(socket_read ($socket, 1024, PHP_NORMAL_READ)) or die("0");// die("Could not read server response\n");
+		usleep(100000);
+	}
+	// close socket
+	socket_close($socket);
+}
+
 //POST
 $slot = $_POST['slot'];
 $price = $_POST['price'];
@@ -31,7 +57,8 @@ $mysqli->query("INSERT INTO notifications (notification) VALUES('Updating Stock:
 
 //credit
 while($price != 0){
-	exec('echo e > /dev/ttyUSB0');
+	//exec('echo e > /dev/ttyUSB0');
+	telnet('e');
 	$price--;
 }
 //notification is in index.php
@@ -43,7 +70,8 @@ $mysqli->query("INSERT INTO notifications (notification) VALUES('Dispensing Item
 
 //dispense
 sleep(2);
-exec('echo '.$slot.' > /dev/ttyUSB0');
+//exec('echo '.$slot.' > /dev/ttyUSB0');
+telnet($slot);
 
 //notification
 $mysqli->query("INSERT INTO notifications (notification) VALUES('Printing Receipt: Ok')");

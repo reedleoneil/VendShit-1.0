@@ -62,7 +62,7 @@ void loop() {
       credit_res();
     }else if(cmd == '1' || cmd == '2' || cmd == '3' || cmd == '4'){
       dispense(cmd);
-      refund_change();
+      //refund_change();
       /*if(cmd == '1'){
         printer.println("**Official Receipt**");
         printer.println("");
@@ -123,9 +123,13 @@ void dispense(char slot){
     delay(1000);
     slot2.write(90);
   }else if(slot == '3'){
-    slot2.write(180);
+    slot3.write(180);
     delay(1000);
-    slot2.write(90);
+    slot3.write(90);
+  }else if(slot == '4'){
+    slot4.write(180);
+    delay(1000);
+    slot4.write(90);
   }
 }
 

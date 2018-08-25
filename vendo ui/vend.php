@@ -93,7 +93,12 @@ if($obj->stock <= $critical_level){
 	$mysqli->query("INSERT INTO notifications (notification) VALUES('Checking Stock: Low')");
 	$mysqli->query("INSERT INTO notifications (notification) VALUES('Alert: Sending SMS')");
 	//sms
-	header("Location:http://192.168.2.5:9090/sendsms?phone=8888&text=INFO&password=");
+
+	//this code is for sms gate way, uncomment if you will use sms gateway
+	//header("Location:http://192.168.2.5:9090/sendsms?phone=8888&text=INFO&password=");
+
+	//this code is for gsm module 900a
+	telnet('z');
 }else{
 	//notification
 	$mysqli->query("INSERT INTO notifications (notification) VALUES('Checking Stock: Ok')");

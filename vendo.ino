@@ -16,6 +16,7 @@
  * s - 2 peso
  * d - refund/change
  * f - print
+ * z - sms
  */
 
 #include <Servo.h>
@@ -88,7 +89,8 @@ void loop() {
     }else if(cmd == 'd'){
       refund_change();
     }else if(cmd == 'z'){
-      SendMessage();
+      String line = Serial.readString();
+      SendMessage(line);
     }
   }
 }
@@ -97,13 +99,13 @@ void loop() {
  * SMS
  */
 
-void SendMessage()
+void SendMessage(String line)
 {
   SIM900A.println("AT+CMGF=1");
   delay(1000);
   SIM900A.println("AT+CMGS=\"+639208577497\"\r");
   delay(1000);
-  SIM900A.println("Critical stocks");
+  SIM900A.println(line);
   delay(100);
   SIM900A.println((char)26);
   delay(1000);

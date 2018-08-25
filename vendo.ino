@@ -31,7 +31,7 @@ Servo slot3;
 Servo slot4;
 Servo changer;
 SoftwareSerial printer(6,7);
-SoftwareSerial SIM900A(10,11);
+SoftwareSerial SIM900A(4,5);
 
 /*
  * Setup Function

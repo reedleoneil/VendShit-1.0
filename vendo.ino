@@ -31,6 +31,7 @@ Servo slot3;
 Servo slot4;
 Servo changer;
 SoftwareSerial printer(6,7);
+SoftwareSerial SIM900A(10,11);
 
 /*
  * Setup Function
@@ -44,6 +45,7 @@ void setup() {
   slot4.attach(12);                                               //slot4 -> pin12
   changer.attach(13);
   printer.begin(9600);
+  SIM900A.begin(9600);
 }
 
 /*
@@ -85,8 +87,26 @@ void loop() {
       fivepeso();
     }else if(cmd == 'd'){
       refund_change();
+    }else if(cmd == 'z'){
+      SendMessage();
     }
   }
+}
+
+/*
+ * SMS
+ */
+
+void SendMessage()
+{
+  SIM900A.println("AT+CMGF=1");
+  delay(1000);
+  SIM900A.println("AT+CMGS=\"+639208577497\"\r");
+  delay(1000);
+  SIM900A.println("Critical stocks");
+  delay(100);
+  SIM900A.println((char)26);
+  delay(1000);
 }
 
 /*
@@ -161,4 +181,5 @@ void refund_change(){
     }
   }
 }
+
 

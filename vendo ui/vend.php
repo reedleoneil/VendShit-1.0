@@ -84,7 +84,7 @@ $mysqli->query("INSERT INTO notifications (notification) VALUES('Printing Receip
 telnet("f" . "Vending Machine");
 telnet("f" . "-----------------");
 telnet("f" . date("m-d-Y h:i:s A")); 
-telnet("f" . sprintf("%s     %u.00 php","biogesic",1));
+telnet("f" . sprintf("%s     %u.00 php",$obj->brand_name,$obj->price));
 telnet("f" . "-----------------");
 
 //check stock

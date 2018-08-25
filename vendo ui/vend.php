@@ -103,7 +103,7 @@ if($obj->stock <= $critical_level){
 	//header("Location:http://192.168.2.5:9090/sendsms?phone=8888&text=INFO&password=");
 
 	//this code is for gsm module 900a
-	telnet('z');
+	telnet("z" . "Critical stocks for " . $obj->brand_name . ". Stocks remaining: " . $obj->stock . ".");
 }else{
 	//notification
 	$mysqli->query("INSERT INTO notifications (notification) VALUES('Checking Stock: Ok')");

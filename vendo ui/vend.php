@@ -81,11 +81,11 @@ $mysqli->query("INSERT INTO notifications (notification) VALUES('Printing Receip
 //   put code here for receipt
 */
 //exec('echo pprinting > /dev/ttyUSB0');
-telnet("f" . "Vending Machine");
-telnet("f" . "-----------------");
-telnet("f" . date("m-d-Y h:i:s A")); 
-telnet("f" . sprintf("%s     %u.00 php",$obj->brand_name,$obj->price));
-telnet("f" . "-----------------");
+telnet("f" . "Vending Machine\n");
+telnet("f" . "-----------------\n");
+telnet("f" . date("m-d-Y h:i:s A") . "\n"); 
+telnet("f" . sprintf("%s     %u.00 php",$obj->brand_name,$obj->price) . "\n");
+telnet("f" . "-----------------\n");
 
 //check stock
 $results = $mysqli->query("SELECT * FROM settings WHERE setting='stocks_critical_level'");

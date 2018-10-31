@@ -330,20 +330,21 @@ myPlayer1 = videojs('ads');
 	});
 
 	$(".buy_button").click(function(){
-		str = $(this).attr("id");
-		res = str.split("_");
-		product_id = res[0];
-		price = parseInt(res[1]);
-		slot = parseInt(res[2]);
-		credit = parseInt($("#credit").text());
-		if(credit >= price){
-			$("[data-toggle='tooltip']").tooltip('hide');
-			$.post("vend.php", {slot:slot, price:price, product_id:product_id}, function(data, status){
-				//alert(data);
-		        });
-		}else{
-			$("[data-toggle='tooltip']").tooltip('show');
-		}
+		$('.quantity').each(function(i, obj) {
+		    	str = obj.attr("id");
+			product_id = res[0];
+			price = parseInt(res[1]);
+			slot = parseInt(res[2]);
+			credit = parseInt($("#credit").text());
+			if(credit >= price){
+				$("[data-toggle='tooltip']").tooltip('hide');
+				$.post("vend.php", {slot:slot, price:price, product_id:product_id}, function(data, status){
+					//alert(data);
+				});
+			}else{
+				$("[data-toggle='tooltip']").tooltip('show');
+			}
+		});
 	});
 
 	$(".more_info").click(function(){

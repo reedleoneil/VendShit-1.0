@@ -112,7 +112,7 @@
 						}
 						echo "<p>";
 						if($obj->stock >= 1)
-												//echo "<a href='#' id='".$obj->product_id."_".$obj->price."_".$obj->slot."' class='btn btn-primary buy_button' style='background-color: ".$button_color."; border-color: white;'>Buy Now!</a> "; 
+						//echo "<a href='#' id='".$obj->product_id."_".$obj->price."_".$obj->slot."' class='btn btn-primary buy_button' style='background-color: ".$button_color."; border-color: white;'>Buy Now!</a> "; 
 						echo "<input type='number' id='".$obj->product_id."_".$obj->price."_".$obj->slot."' class='quantity'></input> ";  
 						echo "<button id='".$obj->product_id."_more_info' type='button' class='btn btn-default more_info' data-toggle='modal' data-target='#".$obj->product_id."_modal'>More Info</button>
 						</p>
@@ -219,6 +219,8 @@ echo "<video id='ads' class='video-js' style='width: 100%'
   data-setup='{}'>
  <source src='videos/Advertisment.mp4' type='video/mp4' />
 </video>
+
+echo "<a href='#' class='btn btn-primary buy_button' style='background-color: ".$button_color."; border-color: white;'>Buy Now!</a> ";
 
 <script>
 

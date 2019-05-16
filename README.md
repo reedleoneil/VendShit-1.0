@@ -3,7 +3,7 @@ Vending Machine Framework
 
 ## Getting Started
 
-Download and read the documentation [here](http://www.symbianize.com/showthread.php?t=1438493&p=23023323&viewfull=1#post23023323).
+Download and read the documentation [here](http://www.mobilarian.com/showthread.php?t=1438493&p=23023323&viewfull=1#post23023323).
 For the block diagram, process diagram and hardware requirements, see chapter II in the documentation. For circuit design and architecture, installation and technical details, see chapter III in the documentation.
 
 ## Features
@@ -101,5 +101,5 @@ Append your script path to the end as follows (suppose your script is /root/fw.s
 Save the file.
 
 ## Check this out!
->Fore more information, check out my thread at [symbianize](http://www.symbianize.com/showthread.php?t=1438493&p=23023323&viewfull=1#post23023323)
+>Fore more information, check out my thread at [symbianize](http://www.mobilarian.com/showthread.php?t=1438493&p=23023323&viewfull=1#post23023323)
 

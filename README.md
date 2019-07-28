@@ -1,4 +1,4 @@
-# VendShit
+# VendShit 1.0
 Vending Machine Framework
 
 ## Getting Started
